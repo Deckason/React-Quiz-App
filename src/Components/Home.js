@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuizContext } from "./CustomContextProvider";
 import ClipLoader from "react-spinners/ClipLoader";
 const Home = () => {
     const {userName, logoutUser, isLoading, setIsLoading} = useQuizContext()
     const navigate = useNavigate()
-    
+
     function goToQuiz() {
         setIsLoading(true)
         if (sessionStorage.getItem("category")) {

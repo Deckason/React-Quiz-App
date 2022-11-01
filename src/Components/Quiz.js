@@ -49,7 +49,7 @@ const Quiz = () => {
 
    useEffect(()=>{
     getDocuments()
-   }, [id])
+   }, [])
 
     return (
         

@@ -20,7 +20,7 @@ const AddQuiz = () => {
         category: yup.string().required("Select a category"),
     })
 
-    const {register, handleSubmit, reset, formState: {errors} } = useForm({
+    const {register, handleSubmit, formState: {errors} } = useForm({
         resolver: yupResolver(addQuizSchema),
     })
 
@@ -62,6 +62,7 @@ const AddQuiz = () => {
                 </form>
                
                <form className="addQuizForm" onSubmit={handleSubmit(addQuiz)}>
+                <p>{err}</p>
                     <div className="question">
                         <textarea placeholder="Enter Question here" {...register("question")}/>
                         <small className="errors">{errors.question?.message}</small>

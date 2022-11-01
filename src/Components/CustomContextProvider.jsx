@@ -71,7 +71,7 @@ const CustomContextProvider = ({children}) => {
     //NAVIGATES TO THE PREVIOUS QUESTION
        function prevQuestion() {
         setErr("")
-        setId(id==0?0:id-1)
+        setId(id===0?0:id-1)
     }
     
     useEffect(()=>{
