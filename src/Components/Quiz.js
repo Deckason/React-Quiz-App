@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
     const {quiz, setQuiz, isLoading, setIsLoading, id,
-        nextQuestion, prevQuestion, category, logoutUser,
-        setErr, err,setAnswer, answer
+        nextQuestion, prevQuestion, logoutUser,
+        setErr, err,setAnswer
     
     } = useQuizContext()
     const navigate = useNavigate()
@@ -49,7 +49,7 @@ const Quiz = () => {
 
    useEffect(()=>{
     getDocuments()
-   },[id])
+   }, [id])
 
     return (
         
