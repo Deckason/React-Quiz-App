@@ -1,13 +1,190 @@
-body {
+*,*::after,*::before{
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  width: 100%;
+  height: 100vh;
+}
+
+/*Login and Registration Page styling*/
+.container{
+  width: 40%;
+  min-height: 200px;
+  max-height: auto;
+  margin: auto;
+  margin-top: 20vh;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to top right, indigo, rgb(192, 189, 189));
+}
+
+h1,h2{
+  color: #fff;
+}
+
+.container form{
+  width: 60%;
+  min-width: 240px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.container form input, textarea{
+  width: 90%;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: 0;
+  color: black;
+}
+
+.container button{
+  border: none;
+  background: indigo;
+  color: #fff;
+  font-size: large;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  width: 120px;
+  cursor: pointer;
+}
+
+.container .prev_next_btn{
+  width: 90%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container p{
+  color: #fff;
+}
+.container  p > a,form .errors{
+  color: rgb(77, 30, 30);
+}
+
+/*Home Page styling*/
+.container select{
+  width: 50%;
+  height: 2rem;
+}
+
+select, option{
+  color: black;
+}
+
+select:hover{
+  cursor: pointer;
+}
+
+select>option:hover{
+  cursor: pointer;
+}
+
+/*Quiz Page*/
+.container .topNav{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topNav button{
+  font-size: small !important;
+}
+
+.container .question{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.question p{
+  font-size: large;
+}
+.container .answer{
+  margin-top: 1rem;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #fff;
+  gap: 1rem;
+}
+
+.answer .option{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+
+.option input{
+  margin-left: 5px;
+}
+
+.container label input{
+  padding: 15px;
+}
+
+/*ADD QUIZ PAGE*/
+.container .addQuizCode{
+  border: 1px solid red;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.container .addQuizForm{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addQuizForm .question{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100px;
+}
+
+.question textarea{
+  width: 100%;
+  height: 100%;
+}
+
+.addQuizForm .QuestionOptions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.addQuizForm .questionAnswer{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
