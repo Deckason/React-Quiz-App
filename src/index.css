@@ -126,17 +126,9 @@ select>option:hover{
 }
 
 .answer .option{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
+  color: indigo;
+  background: #fff;
 }
-
-.option input{
-  margin-left: 5px;
-}
-
 .container label input{
   padding: 15px;
 }

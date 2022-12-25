@@ -4,6 +4,7 @@ import { db } from "../config/firebase";
 import { useQuizContext } from "./CustomContextProvider";
 import ClipLoader from "react-spinners/ClipLoader"
 import { useNavigate } from "react-router-dom";
+import Options from "./Options";
 
 const Quiz = () => {
     const {quiz, setQuiz, isLoading, setIsLoading, id,
@@ -71,17 +72,11 @@ const Quiz = () => {
                         <p>{quiz?.question || "Try refreshing the page"}</p>
                     </div>
                     <div className="answer">
-                        {quiz?.options.map((option, key)=>(
-                           <label key={key} className="option" htmlFor="A">{option}
-                                <input type="radio" name="option" value={option} onChange={()=>checkAnswer(option, key)}/>
-                            </label> 
+                        {quiz?.options.map((option, index)=>(
+                           <Options option={option} key={index}/>
                         ))}
                     </div>
-                    <div className="prev_next_btn">
-                    <button onClick={prevQuestion} >Prev</button>
-                    <p>{id+" "+quiz?.numOfQuestions}</p>
-                    <button onClick={nextQuestion}>Next</button>
-                    </div>
+                    
                 </>
             }
         </div>
