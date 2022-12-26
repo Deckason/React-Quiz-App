@@ -129,8 +129,16 @@ select>option:hover{
   color: indigo;
   background: #fff;
 }
-.container label input{
-  padding: 15px;
+.answer .success{
+  background: rgb(79, 161, 79);
+  color: #fff;
+}
+.answer .wrong{
+  background: rgb(187, 81, 81);
+  color: #fff;
+}
+.answer .disable{
+  cursor: not-allowed;
 }
 
 /*ADD QUIZ PAGE*/

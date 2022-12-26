@@ -9,6 +9,11 @@ import ProtectedRouth from './Components/ProtectedRouth';
 import AddQuiz from './Components/AddQuiz';
 
 function App() {
+
+  //window.addEventListener("beforeunload", (e)=>{
+    //e.preventDefault()
+    //localStorage.clear()
+  //})
   return (
     <CustomContextProvider>
     <div className="App">
