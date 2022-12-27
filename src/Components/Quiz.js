@@ -5,7 +5,6 @@ import { useQuizContext } from "./CustomContextProvider";
 import ClipLoader from "react-spinners/ClipLoader"
 import { useNavigate } from "react-router-dom";
 import Options from "./Options";
-import { useState } from "react";
 import { useReducer } from "react";
 import QuizResult from "./QuizResult";
 
@@ -15,7 +14,6 @@ const Quiz = () => {
     
     } = useQuizContext()
     const navigate = useNavigate()
-    const [qId, setQid] = useState(0)
 
     const quizCollectionRef = collection(db, "quiz")
     const q = query(quizCollectionRef, where("category", "==", sessionStorage.getItem("category")));
@@ -67,7 +65,7 @@ const Quiz = () => {
                 break;
             case ACTION.SELECTED_ANSWER:{
                 const currentAnswer = action.payload;
-                const correctAnswerCount = action.payload == quiz?.quizArray[state?.quizId].answer ? 
+                const correctAnswerCount = action.payload === quiz?.quizArray[state?.quizId].answer ? 
                 state.correctAnswerCount+1 : state.correctAnswerCount;
                 
                 return{
@@ -91,7 +89,7 @@ const Quiz = () => {
 
    useEffect(()=>{
     getDocuments()
-   }, [])
+   }, [sessionStorage.getItem("category")])
 
     return (
         

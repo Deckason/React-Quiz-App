@@ -139,6 +139,7 @@ select>option:hover{
 }
 .answer .disable{
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 /*ADD QUIZ PAGE*/
