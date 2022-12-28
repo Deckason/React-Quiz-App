@@ -189,3 +189,156 @@ select>option:hover{
   align-items: center;
   flex-direction: column;
 }
+
+/*-------------------------------- MEDIA SCREEN 1024px ------------------------------------------*/
+@media screen and (max-width: 1024px) {
+  .container{
+    width: 60%;
+  }
+
+  
+}
+
+/*-------------------------------- MEDIA SCREEN 768px ------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .container{
+    width: 70%;
+  }
+  .question p{
+    font-size: medium;
+  }
+
+  h1,h2,p{
+    font-size: medium;
+  }
+
+  .container button{
+    font-size: medium;
+  }
+
+  .container form{
+    width: 80%;
+  }
+  
+  .container form input, textarea{
+    width: 90%;
+  }
+  
+  .container button{
+    font-size: medium;
+  }
+  
+  /*Home Page styling*/
+  .container select{
+    width: 50%;
+    height: 2rem;
+  }
+  
+}
+
+/*-------------------------------- MEDIA SCREEN 600px ------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .container{
+    width: 75%;
+  }
+  .question p{
+    font-size: medium;
+  }
+  .topNav h4{
+    font-size: medium;
+  }
+  .container button{
+    font-size: medium;
+  }
+  .container form{
+    width: 80%;
+  }
+  .container form input, textarea{
+    width: 90%;
+  }
+  
+  .container button{
+    font-size: medium;
+  }
+
+  h1,h2,h4,p{
+    font-size: medium;
+  }
+  
+  /*Home Page styling*/
+  .container select{
+    width: 50%;
+    height: 2rem;
+  }
+}
+
+/*-------------------------------- MEDIA SCREEN 460px ------------------------------------------*/
+@media screen and (max-width: 460px) {
+  .container{
+    width: 100%;
+  }
+  .question p{
+    font-size: small;
+  }
+
+  .topNav h4{
+    font-size: small;
+  }
+  h1,h2,h2,p{
+    font-size: small;
+  }
+  .container button{
+    font-size: small;
+  }
+  .container form{
+    width: 80%;
+  }
+  
+  .container form input, textarea{
+    width: 90%;
+  }
+  
+  .container button{
+    font-size: medium;
+  }
+  
+  /*Home Page styling*/
+  .container select{
+    width: 50%;
+  }
+}
+
+/*-------------------------------- MEDIA SCREEN 320px ------------------------------------------*/
+@media screen and (max-width: 320px) {
+  .container{
+    width: 100%;
+  }
+  .question p{
+    font-size: small;
+  }
+  h1,h2,h4,p{
+    font-size: small;
+  }
+  .topNav h4{
+    font-size: small;
+  }
+  .container button{
+    font-size: small;
+  }
+  .container form{
+    width: 80%;
+  }
+  
+  .container form input, textarea{
+    width: 90%;
+  }
+  
+  .container button{
+    font-size: medium;
+  }
+  
+  /*Home Page styling*/
+  .container select{
+    width: 50%;
+  }
+}
