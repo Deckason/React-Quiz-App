@@ -15,11 +15,14 @@ const Quiz = () => {
     } = useQuizContext()
     const navigate = useNavigate()
 
+    const category = sessionStorage.getItem("category")
+
     const quizCollectionRef = collection(db, "quiz")
-    const q = query(quizCollectionRef, where("category", "==", sessionStorage.getItem("category")));
+    const q = query(quizCollectionRef, where("category", "==", category));
     
    async function getDocuments() {
         try {
+            setErr("")
             setIsLoading(true)
             const querySnapshot = await getDocs(q);
             let quizArray = [];
@@ -51,7 +54,7 @@ const Quiz = () => {
    
    const reducer = (state, action)=>{
         switch (action.type) {
-            case ACTION.NEXT_QUESTION:{
+            case ACTION.NEXT_QUESTION: {
                 const quizId = state.quizId < quiz?.quizArray.length-1 ? state.quizId+1 : state.quizId;
                 const showResults = state.quizId === quiz?.quizArray.length-1 ? true : state.showResults;
                 const currentAnswer = "";
@@ -62,8 +65,9 @@ const Quiz = () => {
                     currentAnswer,
                 }
             }
-                break;
-            case ACTION.SELECTED_ANSWER:{
+            break;
+
+            case ACTION.SELECTED_ANSWER: {
                 const currentAnswer = action.payload;
                 const correctAnswerCount = action.payload === quiz?.quizArray[state?.quizId].answer ? 
                 state.correctAnswerCount+1 : state.correctAnswerCount;
@@ -74,10 +78,12 @@ const Quiz = () => {
                     correctAnswerCount,
                 }
             }
-            case ACTION.RESTART:{
+            break;
+
+            case ACTION.RESTART: {
                 return initialState
             }
-                break;
+            break;
         
             default:
                 return state;
@@ -89,7 +95,7 @@ const Quiz = () => {
 
    useEffect(()=>{
     getDocuments()
-   }, [sessionStorage.getItem("category")])
+   }, [category])
 
     return (
         
@@ -105,21 +111,21 @@ const Quiz = () => {
                     <>
                         <div className="topNav">
                             <button onClick={logoutUser}>Logout</button>
-                                <h4>Question {`${state.quizId+1}`}</h4>
+                                <h4>Question {`${state?.quizId+1}`}</h4>
                             <button onClick={()=>navigate("/")}>End Quiz</button>
                         </div>
                         <div className="question">
                         <p className="errors">{err}</p>
-                            <p>{quiz?.quizArray[state.quizId].question || "Try refreshing the page"}</p>
+                            <p>{quiz?.quizArray[state.quizId]?.question || "Try refreshing the page"}</p>
                         </div>
                         <div className="answer">
-                            {quiz?.quizArray[state.quizId].options.map((option, index)=>(
+                            {quiz?.quizArray[state.quizId]?.options.map((option, index)=>(
                             <Options 
                                 option={option} 
                                 key={index}
                                 selectedAnswer={(option)=>{dispatch({type: ACTION.SELECTED_ANSWER, payload: option})}}
-                                correctAnswer={quiz?.quizArray[state.quizId].answer}
-                                currentAnswer={state.currentAnswer}
+                                correctAnswer={quiz?.quizArray[state.quizId]?.answer}
+                                currentAnswer={state?.currentAnswer}
                                 correctAnswerCount={state?.correctAnswerCount}
                             />
                         ))}
