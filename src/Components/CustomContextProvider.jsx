@@ -73,6 +73,18 @@ const CustomContextProvider = ({children}) => {
         setErr("")
         setId(id===0?0:id-1)
     }
+
+    function shufle(array){
+        let currentIndex = array.length;
+        while(currentIndex != 0){
+          let randomIndex = Math.floor(Math.random() * array.length);
+          currentIndex--;
+          let tempIndex = array[currentIndex];
+          array[currentIndex] = array[randomIndex]
+          array[randomIndex] = tempIndex
+        }
+        return array
+      }
     
     useEffect(()=>{
         onAuthStateChanged(auth, user=>{
@@ -105,7 +117,8 @@ const CustomContextProvider = ({children}) => {
         category,
         setCategory,
         answser,
-        setAnswer
+        setAnswer,
+        shufle
     }
 
     return (

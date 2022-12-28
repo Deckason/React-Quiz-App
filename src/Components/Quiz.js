@@ -10,7 +10,7 @@ import QuizResult from "./QuizResult";
 
 const Quiz = () => {
     const {quiz, setQuiz, isLoading, setIsLoading, logoutUser,
-        setErr, err
+        setErr, err, shufle
     
     } = useQuizContext()
     const navigate = useNavigate()
@@ -119,7 +119,7 @@ const Quiz = () => {
                             <p>{quiz?.quizArray[state.quizId]?.question || "Try refreshing the page"}</p>
                         </div>
                         <div className="answer">
-                            {quiz?.quizArray[state.quizId]?.options.map((option, index)=>(
+                            {quiz && shufle(quiz.quizArray[state.quizId]?.options).map((option, index)=>(
                             <Options 
                                 option={option} 
                                 key={index}
