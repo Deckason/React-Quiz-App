@@ -24,8 +24,8 @@ const Home = () => {
             <h4>Select a Quiz Category</h4>
             <select defaultValue={"DEFAULT"} onChange={e=>{sessionStorage.setItem("category", e.target.value)}}>
                 <option hidden value={"DEFAULT"}>Choose Quiz Category</option>
-                {/*<option value={"General Knowledge"}>General Knowledge Quiz</option>
-                <option value={"Geography Quiz"}>Geography Quiz</option>
+                <option value={"General Knowledge"}>General Knowledge Quiz</option>
+                {/*<option value={"Geography Quiz"}>Geography Quiz</option>
                 <option value={"Food & Drink Quiz"}>Food And Drink Quiz</option>
     <option value={"Sports Quiz"}>Sports Quiz</option>*/}
             </select>
