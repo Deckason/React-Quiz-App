@@ -20,6 +20,8 @@ const Quiz = () => {
     const quizCollectionRef = collection(db, "quiz")
     const q = query(quizCollectionRef, where("category", "==", category));
     
+
+//FETCHING THE QUIZ FROM THE DATABASE
    async function getDocuments() {
         try {
             setErr("")
@@ -31,7 +33,8 @@ const Quiz = () => {
             quizArray.push({...doc.data()});
             });
 
-            setQuiz({quizArray})
+            setQuiz({quizArray})//-----------------------STORED THE QUIZ HERE------------------------
+
             setIsLoading(false)
             
             } catch (error) {
@@ -39,7 +42,10 @@ const Quiz = () => {
                 setIsLoading(false)
             }
    }
+
+
    const initialState = {
+        quiz: quiz, //this is not working because the get documents function is taking time to fetch the quiz from the database
         quizId: 0,
         correctAnswerCount: 0,
         currentAnswer: "",
@@ -128,7 +134,7 @@ const Quiz = () => {
                                 currentAnswer={state?.currentAnswer}
                                 correctAnswerCount={state?.correctAnswerCount}
                             />
-                        ))}
+                            ))}
                         </div>
                         {state?.currentAnswer &&
                             <button onClick={()=>{dispatch({type: ACTION.NEXT_QUESTION})}}>
