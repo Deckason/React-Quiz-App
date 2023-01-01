@@ -37,7 +37,7 @@ const Home = () => {
     },[])
 
     return (
-        <div className="container">
+        <div className="container home_page">
             <h1>Welcome {userName}</h1>
             
             <h4>Select a Quiz Category</h4>

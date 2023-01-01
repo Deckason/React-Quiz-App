@@ -241,6 +241,8 @@ select>option:hover{
 @media screen and (max-width: 600px) {
   .container{
     width: 75%;
+    height: 80vh;
+
   }
   .question p{
     font-size: medium;
@@ -277,6 +279,7 @@ select>option:hover{
 @media screen and (max-width: 460px) {
   .container{
     width: 100%;
+    height: 95vh;
   }
   .question p{
     font-size: small;
@@ -313,7 +316,16 @@ select>option:hover{
 @media screen and (max-width: 320px) {
   .container{
     width: 100%;
+    height: 95vh;
   }
+
+  .home_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .question p{
     font-size: small;
   }
