@@ -1,21 +1,21 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import {collection, addDoc} from "firebase/firestore"
+import {collection, addDoc, getDocs} from "firebase/firestore"
 import { db } from "../config/firebase";
 import { useQuizContext } from "./CustomContextProvider";
 import { ClipLoader } from "react-spinners";
+import { useEffect } from "react";
 
 const AddQuiz = () => {
 
-    const {isLoading, setIsLoading, err, setErr} = useQuizContext()
+    const {isLoading, setIsLoading, err, setErr, shufle, category, setCategory, filterArr} = useQuizContext()
 
     const addQuizSchema = yup.object().shape({
         question: yup.string().required("Question field is required!"),
         optionA: yup.string().required("Input field is required!"),
         optionB: yup.string().required("Input field is required!"),
         optionC: yup.string().required("Input field is required!"),
-        optionD: yup.string().required("Input field is required!"),
         answer: yup.string().required("Provide an answer to the question"),
         category: yup.string().required("Select a category"),
     })
@@ -23,37 +23,44 @@ const AddQuiz = () => {
     const {register, handleSubmit, formState: {errors} } = useForm({
         resolver: yupResolver(addQuizSchema),
     })
-
+    
     async function addQuiz(data) {
-        //const quiz = {
-          //  Question: data.Question,
-            //optionA: data.optionA,
-            //optionB: data.optionB,
-            //optionC: data.optionC,
-            //optionD: data.optionD,
-            //answer: data.answer,
-            //category: data.category,
-        //}
-
+        const options = [data.optionA,data.optionB,data.optionC,data.answer];
+        shufle(options)
         try {
+            console.log(data)
             setIsLoading(true)
             const addQuizRef = collection(db, "quiz")
             const docRef = await addDoc(addQuizRef,{
                 question: data.question,
-                options: [data.optionA,data.optionB,data.optionC,data.optionD],
+                options: options,
                 answer: data.answer,
                 category: data.category,
             })
-            console.log(docRef.id, "Document added")
+            if (docRef) {
+                alert("Question added successfully")
+            }
+            window.location.reload()
             setIsLoading(false)
-            const form = document.querySelector(".addQuizForm")
-            form.reset()
         } catch (error) {
             setErr(error.message)
             setIsLoading(false)
         }
     }
 
+    async function getCategories() {
+        const categoryArr = []
+        const querySnapshot = await getDocs(collection(db, "quiz"));
+        querySnapshot.forEach((doc) => {
+            categoryArr.push(doc.data().category);
+        });
+        setCategory(filterArr(categoryArr))
+    }
+
+    useEffect(()=>{
+        getCategories()
+    },[])
+    
     return (
         <div className="container">
                 <form className="addQuizCode">
@@ -62,39 +69,35 @@ const AddQuiz = () => {
                 </form>
                
                <form className="addQuizForm" onSubmit={handleSubmit(addQuiz)}>
-                <p>{err}</p>
+                <p>{err && err}</p>
                     <div className="question">
-                        <textarea placeholder="Enter Question here" {...register("question")}/>
+                        <textarea className="inputDetails" placeholder="Enter Question here" {...register("question")}/>
                         <small className="errors">{errors.question?.message}</small>
                     </div>
                     <div className="QuestionOptions">
                         <div className="input">
-                            <input type="text"  placeholder="Enter option A" {...register("optionA")}/>
+                            <input type="text" className="inputDetails"  placeholder="Enter option A" {...register("optionA")}/>
                             <small className="errors">{errors.optionA?.message}</small>
                         </div>
                        <div className="input">
-                            <input type="text" placeholder="Enter option B" {...register("optionB")}/>
+                            <input type="text" className="inputDetails" placeholder="Enter option B" {...register("optionB")}/>
                             <small className="errors">{errors.optionB?.message}</small>
                        </div>
                         <div className="input">
-                            <input type="text" placeholder="Enter option C" {...register("optionC")}/>
+                            <input type="text" className="inputDetails" placeholder="Enter option C" {...register("optionC")}/>
                             <small className="errors">{errors.optionC?.message}</small>
-                        </div>
-                        <div className="input">
-                            <input type="text" placeholder="Enter option D" {...register("optionD")}/>
-                            <small className="errors">{errors.optionD?.message}</small>
                         </div>
                     </div>
                     <div className="questionAnswer">
-                        <input type="text" placeholder="Enter your answer" {...register("answer")}/>
+                        <input type="text" className="inputDetails" placeholder="Enter correct answer" {...register("answer")}/>
                         <small className="errors">{errors.answer?.message}</small>
                     </div>
                     <select {...register("category")}>
-                        <option hidden value={""}>Choose Quiz Category</option>
+                        <option className="inputDetails" hidden value={""}>Choose Quiz Category</option>
                         <option value={"General Knowledge"}>General Knowledge Quiz</option>
-                        <option value={"Geography Quiz"}>Geography Quiz</option>
-                        <option value={"Food & Drink Quiz"}>Food And Drink Quiz</option>
-                        <option value={"Sports Quiz"}>Sports Quiz</option>
+                        {category && category.map((element, key)=>(
+                            <option key={key} value={element}>{element}</option>
+                        ))}
                     </select>
                     <small className="errors">{errors.category?.message}</small>
                     <button>

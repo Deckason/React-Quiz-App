@@ -10,7 +10,7 @@ import QuizResult from "./QuizResult";
 
 const Quiz = () => {
     const {quiz, setQuiz, isLoading, setIsLoading, logoutUser,
-        setErr, err, shufle
+        setErr, err
     
     } = useQuizContext()
     const navigate = useNavigate()
@@ -45,7 +45,7 @@ const Quiz = () => {
 
 
    const initialState = {
-        quiz: quiz, //this is not working because the get documents function is taking time to fetch the quiz from the database
+        //quiz: quiz, //this is not working because the get documents function is taking time to fetch the quiz from the database
         quizId: 0,
         correctAnswerCount: 0,
         currentAnswer: "",
@@ -125,7 +125,7 @@ const Quiz = () => {
                             <p>{quiz?.quizArray[state.quizId]?.question || "Try refreshing the page"}</p>
                         </div>
                         <div className="answer">
-                            {quiz && shufle(quiz.quizArray[state.quizId]?.options).map((option, index)=>(
+                            {quiz?.quizArray[state.quizId]?.options.map((option, index)=>(
                             <Options 
                                 option={option} 
                                 key={index}

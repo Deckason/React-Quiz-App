@@ -4,10 +4,11 @@ import * as yup from "yup";
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useQuizContext } from './CustomContextProvider';
+import { ClipLoader } from 'react-spinners';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createAccount, setConnErr} = useQuizContext()
+    const { createAccount, setConnErr, isLoading, setIsLoading} = useQuizContext()
 
     const registerSchema = yup.object().shape({
         name: yup.string().required("Name is required!"),
@@ -22,35 +23,15 @@ const Register = () => {
       });
 
       async function handleRegister(data) {
-        //const auth = getAuth()
-       /* const user = {
-            name: data.name,
-            username: data.username,
-            email: data.email,
-            password: data.password
-        }
-        */
-        
         try {
+            setIsLoading(true)
             await createAccount( data.email, data.password, data.username)
+            setIsLoading(false)
             navigate("/")
-
         } catch (error) {
+            setIsLoading(false)
             setConnErr(error.message)
         }
-            
-            
-            //console.log("Account created", auth.currentUser)
-            //await updateProfile(auth.currentUser,{
-              //  displayName: data.username
-            //})
-            //setUser(auth.currentUser);
-            //setUserName(user.displayName)
-
-
-       
-            //localStorage.setItem("user", JSON.stringify(user));
-            //navigate("/login");
     }
     
 
@@ -70,7 +51,14 @@ const Register = () => {
                 <input type="text" placeholder="Enter Email" {...register("email")}/>
                 <input type={"password"} placeholder="Enter Password" autoComplete='password' {...register("password")}/>
                 <input type={"password"} placeholder="Enter Confirm Password" autoComplete='password' {...register("confirmPassword")}/>
-                <button>Submit</button>
+                <button>
+                    {isLoading?<ClipLoader
+                        color={"#fff"}
+                        loading={isLoading}
+                        size={10}
+                    /> 
+                    : "Submit"}
+                </button>
                 <p>Already have an account? <Link to={"/login"}>Login here</Link></p>
             </form>
         </div>

@@ -76,7 +76,7 @@ const CustomContextProvider = ({children}) => {
 
     function shufle(array){
         let currentIndex = array.length;
-        while(currentIndex != 0){
+        while(currentIndex !== 0){
           let randomIndex = Math.floor(Math.random() * array.length);
           currentIndex--;
           let tempIndex = array[currentIndex];
@@ -84,6 +84,10 @@ const CustomContextProvider = ({children}) => {
           array[randomIndex] = tempIndex
         }
         return array
+      }
+
+      const filterArr = (array)=>{
+        return array.filter((el, index) =>array.indexOf(el) === index)
       }
     
     useEffect(()=>{
@@ -118,7 +122,8 @@ const CustomContextProvider = ({children}) => {
         setCategory,
         answser,
         setAnswer,
-        shufle
+        shufle,
+        filterArr
     }
 
     return (
