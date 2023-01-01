@@ -17,6 +17,9 @@ const Quiz = () => {
 
     const category = sessionStorage.getItem("category")
 
+    if (!category) {
+       navigate("/") 
+    }
     const quizCollectionRef = collection(db, "quiz")
     const q = query(quizCollectionRef, where("category", "==", category));
     
@@ -117,12 +120,11 @@ const Quiz = () => {
                     <>
                         <div className="topNav">
                             <button onClick={logoutUser}>Logout</button>
-                                <h4>Question {`${state?.quizId+1}`}</h4>
                             <button onClick={()=>navigate("/")}>End Quiz</button>
                         </div>
                         <div className="question">
                         <p className="errors">{err}</p>
-                            <p>{quiz?.quizArray[state.quizId]?.question || "Try refreshing the page"}</p>
+                            <p>{`${state?.quizId+1}) `}{quiz?.quizArray[state.quizId]?.question || "Try refreshing the page"}</p>
                         </div>
                         <div className="answer">
                             {quiz?.quizArray[state.quizId]?.options.map((option, index)=>(

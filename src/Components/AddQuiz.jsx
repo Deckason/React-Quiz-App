@@ -6,10 +6,12 @@ import { db } from "../config/firebase";
 import { useQuizContext } from "./CustomContextProvider";
 import { ClipLoader } from "react-spinners";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddQuiz = () => {
 
-    const {isLoading, setIsLoading, err, setErr, shufle, category, setCategory, filterArr} = useQuizContext()
+    const {isLoading, setIsLoading, err, setErr, logoutUser, shufle, category, setCategory, filterArr} = useQuizContext()
+    const navigate = useNavigate()
 
     const addQuizSchema = yup.object().shape({
         question: yup.string().required("Question field is required!"),
@@ -63,11 +65,15 @@ const AddQuiz = () => {
     
     return (
         <div className="container">
-                <form className="addQuizCode">
+                {/*<form className="addQuizCode">
                     <input type="password" placeholder="Enter access code" autoComplete="password"/>
                     <button>Submit</button>
-                </form>
+                </form>*/}
                
+               <div className="topNav">
+                    <button onClick={logoutUser}>Logout</button>
+                    <button onClick={()=>navigate("/")}>Home</button>
+                </div>
                <form className="addQuizForm" onSubmit={handleSubmit(addQuiz)}>
                 <p>{err && err}</p>
                     <div className="question">
