@@ -203,155 +203,231 @@ select>option:hover{
 /*-------------------------------- MEDIA SCREEN 768px ------------------------------------------*/
 @media screen and (max-width: 768px) {
   .container{
-    width: 70%;
-  }
-  .question p{
-    font-size: medium;
+    width: 75%;
   }
 
-  h1,h2,p{
-    font-size: medium;
-  }
-
-  .container button{
-    font-size: medium;
-  }
-
-  .container form{
-    width: 80%;
-  }
-  
-  .container form input, textarea{
-    width: 90%;
-  }
-  
-  .container button{
-    font-size: medium;
-  }
-  
   /*Home Page styling*/
   .container select{
     width: 50%;
     height: 2rem;
   }
-  
+
 }
+
+
 
 /*-------------------------------- MEDIA SCREEN 600px ------------------------------------------*/
 @media screen and (max-width: 600px) {
   .container{
-    width: 75%;
-    height: 80vh;
-
-  }
-  .question p{
-    font-size: medium;
-  }
-  .topNav h4{
-    font-size: medium;
-  }
-  .container button{
-    font-size: medium;
-  }
-  .container form{
-    width: 80%;
-  }
-  .container form input, textarea{
-    width: 90%;
-  }
-  
-  .container button{
-    font-size: medium;
-  }
-
-  h1,h2,h4,p{
-    font-size: medium;
-  }
-  
-  /*Home Page styling*/
-  .container select{
-    width: 50%;
-    height: 2rem;
-  }
-}
-
-/*-------------------------------- MEDIA SCREEN 460px ------------------------------------------*/
-@media screen and (max-width: 460px) {
-  .container{
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 95vh;
-  }
-  .question p{
-    font-size: small;
+    min-height: 100vh !important;
   }
 
-  .topNav h4{
-    font-size: small;
-  }
-  h1,h2,h2,p{
-    font-size: small;
-  }
-  .container button{
-    font-size: small;
-  }
-  .container form{
-    width: 80%;
-  }
-  
-  .container form input, textarea{
-    width: 90%;
-  }
-  
-  .container button{
-    font-size: medium;
-  }
-  
   /*Home Page styling*/
-  .container select{
-    width: 50%;
-  }
-}
-
-/*-------------------------------- MEDIA SCREEN 320px ------------------------------------------*/
-@media screen and (max-width: 320px) {
-  .container{
-    width: 100%;
-    height: 95vh;
-  }
-
   .home_page{
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
 
-  .question p{
-    font-size: small;
+  h1{
+    font-size: xx-large;
   }
-  h1,h2,h4,p{
-    font-size: small;
+
+  .container select{
+    height: 1.5rem;
+    width: 60%;
   }
-  .topNav h4{
-    font-size: small;
+
+  /*-------------- LOGIN PAGE ---------------------------*/
+  .container .login{
+    padding-top: 2rem;
+    gap: 0.7rem;
   }
-  .container button{
-    font-size: small;
+
+  /*-------------Quiz Page-----------------*/
+  .quiz_page{
+    padding-top: 1rem;
   }
-  .container form{
-    width: 80%;
-  }
-  
-  .container form input, textarea{
-    width: 90%;
-  }
-  
-  .container button{
+
+  .quiz_page .question p{
     font-size: medium;
   }
-  
-  /*Home Page styling*/
-  .container select{
-    width: 50%;
+
+  /*----------------- Register Page ---------------------*/
+.register_page{
+  width: 100%;
+  height: auto;
+}
+
+.register{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2rem;
+}
+
+/*-----------------Add quiz page ------------------------*/
+.add_quiz{
+  height: auto;
+  padding-top: 2rem;
+}
+
+}
+
+/*-------------------------------- MEDIA SCREEN 320px ------------------------------------------*/
+@media screen and (max-width: 320px) {
+  .container{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh !important;
   }
+
+  /*Home Page styling*/
+  .home_page{
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .home_page h1{
+    font-size: larger;
+  }
+
+  .container select{
+    height: 1.5rem;
+    width: 60%;
+  }
+
+  /*-------------- LOGIN PAGE ---------------------------*/
+  .container .login{
+    padding-top: 2rem;
+    gap: 0.7rem;
+  }
+  
+  .login .reg_page{
+    font-size: small;
+  }
+
+  /*-------------Quiz Page-----------------*/
+  .quiz_page{
+    padding-top: 1rem;
+  }
+
+  .quiz_page .question p{
+    font-size: medium;
+  }
+
+  /*----------------- Register Page ---------------------*/
+.register_page{
+  width: 100%;
+  height: auto;
+}
+
+.register{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2rem;
+}
+
+.register p{
+  font-size: small;
+}
+
+.register .Lgn_page{
+  font-size: small;
+}
+
+/*-----------------Add quiz page ------------------------*/
+.add_quiz{
+  height: auto;
+  padding-top: 2rem;
+}
+
+}
+
+/*-------------------------------- MEDIA SCREEN 240px ------------------------------------------*/
+@media screen and (max-width: 240px) {
+  .container{
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    min-height: 100vh !important;
+  }
+
+  /*Home Page styling*/
+  .home_page{
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .home_page h1{
+    font-size: larger;
+  }
+
+  .container select{
+    height: 1.5rem;
+    width: 80%;
+  }
+
+  /*-------------- LOGIN PAGE ---------------------------*/
+  .container .login{
+    padding-top: 2rem;
+    gap: 0.7rem;
+  }
+  
+  .login .reg_page{
+    font-size: small;
+  }
+
+  /*-------------Quiz Page-----------------*/
+  .quiz_page{
+    padding-top: 1rem;
+    padding: 1px;
+  }
+
+  .quiz_page .question p{
+    font-size: small;
+  }
+
+  /*----------------- Register Page ---------------------*/
+.register_page{
+  width: 100%;
+  height: auto;
+}
+
+.register{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2rem;
+}
+
+.register p{
+  font-size: small;
+}
+
+.register .Lgn_page{
+  font-size: small;
+}
+
+/*-----------------Add quiz page ------------------------*/
+.add_quiz{
+  height: auto;
+  padding-top: 2rem;
+}
+
+
+.container .answer{
+  width: 100%;
+}
+
 }

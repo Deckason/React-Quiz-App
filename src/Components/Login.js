@@ -43,7 +43,7 @@ import ClipLoader from "react-spinners/ClipLoader"
     return (
         <div className="container">
             <form action="" className="login" onSubmit={handleSubmit(handleLogin)}>
-                <h2>Login</h2>
+                <h1>Login</h1>
                     <p className="errors">{err}</p>
                     <p className="errors">{errors.email?.message}</p>
                     <p className="errors">{errors.password?.message}</p>
@@ -58,7 +58,7 @@ import ClipLoader from "react-spinners/ClipLoader"
                     /> 
                     : "Submit"}
                 </button>
-                <p>Don't have an account? <Link to={"/register"}>Register here</Link></p>
+                <p className='reg_page'>Don't have an account? <Link to={"/register"}>Register here</Link></p>
             </form>
         </div>
     );

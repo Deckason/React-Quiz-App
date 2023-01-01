@@ -64,7 +64,7 @@ const AddQuiz = () => {
     },[])
     
     return (
-        <div className="container">
+        <div className="container add_quiz">
                 {/*<form className="addQuizCode">
                     <input type="password" placeholder="Enter access code" autoComplete="password"/>
                     <button>Submit</button>

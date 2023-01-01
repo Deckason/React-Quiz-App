@@ -108,7 +108,7 @@ const Quiz = () => {
 
     return (
         
-        <div className="container">
+        <div className="container quiz_page">
             {!state.showResults &&
                 <>
                     {isLoading && <ClipLoader

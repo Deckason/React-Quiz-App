@@ -37,9 +37,9 @@ const Register = () => {
 
 
     return (
-        <div className="container">
+        <div className="container register_page">
             <form action="" className="register" onSubmit={handleSubmit(handleRegister)}>
-                <h2>Register</h2>
+                <h1>Register</h1>
                     <p className="errors">{errors.name?.message}</p>
                     <p className="errors">{errors.username?.message}</p>
                     <p className="errors">{errors.email?.message}</p>
@@ -59,7 +59,7 @@ const Register = () => {
                     /> 
                     : "Submit"}
                 </button>
-                <p>Already have an account? <Link to={"/login"}>Login here</Link></p>
+                <p className='Lgn_page'>Already have an account? <Link to={"/login"}>Login here</Link></p>
             </form>
         </div>
     );
